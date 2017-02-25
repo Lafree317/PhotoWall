@@ -1,44 +1,123 @@
-html, body{
-  width:100%;
-  height:100%;
-  background-color: #ddd;
+@font-face {
+    font-family: "icons-turn-arrow";
+    src: url("../fonts/icons/turn-arrow.eot") format("embedded-opentype"), url("../fonts/icons/turn-arrow.woff") format("woff"), url("../fonts/icons/turn-arrow.ttf") format("truetype"), url("../fonts/icons/turn-arrow.svg") format("svg");
 }
 
-.content {
+@mixin dis_whole {
   width: 100%;
   height: 100%;
 }
+html, body {
+    width: 100%;
+    height: 100%;
 
-/* stage -- start */
+    background-color: #222;
+}
+.content{
+  @include dis_whole;
+}
 .stage {
-  position: relative;
+    position: relative;
 
-  width: 100%;
-  height: 680px;
+    width: 100%;
+    height: 800px;
 }
-/* stage -- end */
-
-/* image -- start */
-.img-sec {
+.img-sec{
   position: relative;
-
-  width: 100%;
-  height: 100%;
-  overflow: hidden;;
-
   background-color: #ddd;
-}
-/* iamge -- end */
+  overflow: hidden;
+  perspective: 1800px;
+  @include dis_whole;
+  @at-root {
+    .img-figure {
+      position: absolute;
+      width: 320px;
+      height: 360px;
+      margin: 0;
+      padding: 40px;
+      box-sizing: border-box;
+      background-color: #fff;
+      cursor: pointer;
+      //三个参数分别代表xyz轴的变形原点
+      transform-origin: 0 50% 0;
+      transform-style: preserve-3d;
+      //定义left和top变化时变化的时间和动画类型
+      transition: transform .6s ease-in-out, left .6s ease-in-out, top .6s ease-in-out;
+      //&:sass对于父类写的属性，向右移动320px(一个图片的宽度),达到翻转后还是在原处
+      &.is-inverse {
+        transform: translate(320px) rotateY(180deg);
+      }
+    }
+    .img-back {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      padding: 30px;
+      box-sizing: border-box;
+      text-align: center;
+      color: #666;
+      transform: rotateY(180deg) translateZ(1px);
+      backface-visibility:hidden;
 
-/* controller -- start */
+      background: #fff;
+    }
+    figcaption{
+      text-align: center;
+      .img-title{
+        margin: 20px 0 0 0;
+        color: #a7a0a2;
+        font-size: 16px;
+      }
+    }
+  }
+}
 .controller-nav {
   position: absolute;
   left: 0;
   bottom: 30px;
   z-index: 101;
-
   width: 100%;
-
   text-align: center;
+
+  @at-root{
+    .controller-unit {
+      display: inline-block;
+      margin: 0 5px;
+      width: 30px;
+      height: 30px;
+
+      text-align: center;
+      vertical-align: middle;
+
+      cursor: pointer;;
+      background-color: #aaa;
+      border-radius: 50%;
+
+      transform: scale(.5);
+      transition: transform .6s ease-in-out, background-color .3s;
+      &.is-center{
+        background-color: #888;
+        transform: scale(1);
+        &::after {
+          color: #fff;
+          font-family: "icons-turn-arrow";
+          line-height: 30px;
+          font-size: 80%;
+
+          content: "\e600";
+
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: graysacle;
+        }
+
+        &.is-inverse {
+          background-color: #555;
+
+          transform: rotateY(180deg);
+        }
+      }
+    }
+  }
 }
-/* controller -- end */
