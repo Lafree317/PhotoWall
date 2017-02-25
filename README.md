@@ -2,7 +2,7 @@
 
 React实践图片画廊应用
 
-更改已过时的语法
+更新语法
 
 展示地址:https://lafree317.github.io/PhotoWall/
 
