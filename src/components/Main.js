@@ -142,6 +142,8 @@ center(index) {
         isCenter: false
       };
     }
+
+
     if (imgsArrangTopArr && imgsArrangTopArr[0]) {
       imgsArrangeArr.splice(topImgSpiceIndex, 0, imgsArrangTopArr[0]);
     }
