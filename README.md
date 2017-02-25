@@ -1,6 +1,9 @@
 # PhotoWall
+
 React实践图片画廊应用
+
 更改已过时的语法
+
 展示地址:https://lafree317.github.io/PhotoWall/
 
 一些收集的总结经验:
