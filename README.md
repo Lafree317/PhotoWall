@@ -1,11 +1,19 @@
 # PhotoWall
 
+
 React实践图片画廊应用
 
 更新语法
 
 展示地址:https://lafree317.github.io/PhotoWall/
 
+食用方法:
+```
+$ git clone https://github.com/Lafree317/PhotoWall.git
+$ cd PhotoWall
+$ npm install
+$ npm start
+```
 一些收集的总结经验:
 
 ```
